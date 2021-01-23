@@ -16,8 +16,8 @@ class KeyGenerator{
         let p = 0;
         let q = 0;
         while(p == q){
-            p = PrimeNumberManager.GetRandomPrimeNumber();
-            q = PrimeNumberManager.GetRandomPrimeNumber();
+            p = GetRandomPrimeNumber();
+            q = GetRandomPrimeNumber();
         }
 
         this.P = p;
