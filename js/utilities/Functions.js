@@ -31,7 +31,9 @@ function getRandomNumberInRange(min, max){
 
 function GetAllFactorsGreaterThanOne(num){
     let factors = [];
-    for(i = Math.round(num/2); i >= 2; i--) {
+    let highestPotentialFactor = Math.round(num/2);
+    
+    for(i = highestPotentialFactor; i > 1; i--) {
         if(num % i == 0){
             factors.push(i);
         }

@@ -1,6 +1,6 @@
 const HEX_DIGIT_COUNT = 5;
 
-function ConvertTextToNumber(character) {
+function ConvertCharacterToNumber(character) {
     let result = 0;
     result = CharacterNumberDictionary[character]
     if (result == undefined) {
