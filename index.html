@@ -7,9 +7,87 @@
     <title>PPK Cryptography</title>
 </head>
 <body>
-    <h1>Private and Public Key Cryptography</h1>
-    <h2>Explanation and sample using RSA Encryption</h2>
+    <div class="titleDiv">
+        <h1 class="mb-0">Private and Public Key Cryptography</h1>
+        <h2>Demo using RSA Encryption</h2>
+
+        <p>
+            This website simulates the creation of a Public and Private Key using the RSA Encryption algorithm.
+            It uses pure JS for the encryption (no 3rd party crypto libraries). 
+        </p>
+        <p>
+        This is for educational purposes only, and
+            should not be depended on for secure encryption. Typical Public and Private Keys use a P and Q which result in
+            N being 256-1024 digits. In this application, N is usually 5-6 digits.
+        </p>
+    </div>
     <hr/>
+    <br>
+    <div class="keyGenerator">
+        <button id="generateKeysButton" onclick='GenerateKeys()'>GENERATE KEYS</button>
+        <table class="keyValuesTable">
+            <thead>
+                <th>Prime Number 1 (P)</th>
+                <th>Prime Number 2 (Q)</th>
+                <th>Product of P and Q (N)</th>
+                <th>Phi of N (ΦN)</th>
+                <th>Factors of N</th>
+                <th>Factors of ΦN</th>
+                <th>Encryption Number (E)</th>
+                <th>Decryption Number (D)</th>
+                <th>Public Key (E,N)</th>
+                <th>Private Key (D,N)</th>
+            </thead>
+            <tbody>
+                <td id="P">P</td>
+                <td id="Q">Q</td>
+                <td id="N">N</td>
+                <td id="Phi">ΦN</td>
+                <td id="FactorsN">x|N</td>
+                <td id="FactorsPhi">x|ΦN</td>
+                <td id="E">E</td>
+                <td id="D">D</td>
+                <td id="PuKey">(E,N)</td>
+                <td id="PiKey">(D,N)</td>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="encryptionDecryptionSection">
+        <div class="half">
+            <h2 class="mb-0">Encrypt</h2>
+            <p class="acceptedChars">Accepted Characters: letters, numbers, comma, period, apostrophe, whitespace.</p>
+            <textarea placeholder="Enter your text to be encryted." id="rawInput"  rows="6" cols="60"></textarea>
+            <br/>
+            <label>D:</label><input type="number" id="privateKeyD">
+            <br/>
+            <label>N:</label><input type="number" id="privateKeyN">
+            <br/>
+            <button class="red" onclick="EncryptUserInput()">ENCRYPT</button>
+
+            <hr>
+            <p>Result:</p>
+            <textarea id="encryptedResult" readonly rows="6" cols="60"></textarea>
+        </div>
+        <div class="half">
+            <h2 class="mb-0">Decrypt</h2>
+            <p class="acceptedChars">&nbsp;</p>
+            <textarea placeholder="Enter your text to be decrypted." id="encryptedInput" rows="6" cols="60"></textarea>
+            <br/>
+            <label>E:</label><input type="number" id="publicKeyE">
+            <br/>
+            <label>N:</label><input type="number" id="publicKeyN">
+            <br/>
+            <button class="green" onclick="DecryptUserInput()">DECRYPT</button>
+
+            <hr>
+            <p>Result:</p>
+                <textarea id="decryptedResult" readonly rows="6" cols="60"></textarea>
+        </div>
+    </div>
+    <button id="resetButton" onclick="ClearAllInputs()">CLEAR INPUTS</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="js/utilities/Functions.js"></script>
     <script src="js/utilities/PrimeNumberManager.js"></script>
     <script src="js/classes/KeyGenerator.js"></script>
